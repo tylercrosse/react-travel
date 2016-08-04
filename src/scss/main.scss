@@ -1,0 +1,44 @@
+@import 'bourbon';
+
+@import './_normalize';
+
+$color-1: #fff;
+$color-2: #8e9295;
+$color-3: #242625;
+
+body {
+}
+
+.location-hero {
+  height: 70vh;
+  width: 100%;
+  text-align: center;
+}
+
+.location-list {
+  background-color: $color-3;
+  padding: 3em;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.location-card {
+  color: $color-1;
+  background-color: $color-2;
+  width: 16em;
+  height: 9em;
+  padding: 0.4em;
+  margin: 1em;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-radius: 0.4em;
+  @include transition(all 0.4s $ease-in-out-cubic)
+  cursor: pointer;
+  
+  &:hover {
+    @include transform(scale(1.2));
+  }
+}
