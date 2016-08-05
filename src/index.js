@@ -20,21 +20,22 @@ class LocationBox extends React.Component{
     this.state = {
       location: ''
     }
-    this.handleClick = this.handleClick.bind(this);
   }
-  handleClick(evt) {
+  handleClick(evt, index) {
     console.log('pizza');
-    console.log(this.props);
-    this.setState({location: this.props.location})
+    console.log(index);
+    // Think this is what you want
+    // let location = this.props.data[index].location
+    // this.setState({ location })
   }
   render() {
     return (
       <div className='location-box'>
         <LocationHero />
-        <LocationList data={this.props.data} onClick={this.handleClick}/>
+        <LocationList data={this.props.data} onClick={(e, i) => this.handleClick(e, i)}/>
       </div>
     )
-  }  
+  }
 }
 
 class LocationHero extends React.Component{
@@ -50,14 +51,17 @@ class LocationHero extends React.Component{
 
 class LocationList extends React.Component{
   render() {
-    let locationNodes = this.props.data.map(function(location) {
+    let locationNodes = this.props.data.map((location, index) => {
       return(
-        <LocationCard location={location.location} key={location.id} />
-        
+        <LocationCard
+          onClick={(e, i) => this.props.onClick(e, i)}
+          index={index}
+          location={location.location}
+          key={location.id} />
       )
     })
     return (
-      <div className='location-list' onClick={this.props.onClick}>
+      <div className='location-list'>
         {locationNodes}
       </div>
     )
@@ -66,9 +70,10 @@ class LocationList extends React.Component{
 
 class LocationCard extends React.Component{
   render() {
+    let {onClick, index, location} = this.props
     return (
-      <div className='location-card'>
-        <h2>{this.props.location}</h2>
+      <div className='location-card' onClick={(e) => onClick(e, index)}>
+        <h2>{location}</h2>
       </div>
     )
   }
