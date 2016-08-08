@@ -1,3 +1,5 @@
+const path = require('path')
+
 const bourbon = require('node-bourbon').includePaths;
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -7,12 +9,18 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   inject: "body"
 })
 
+const PATHS = {
+  src: path.join(__dirname, 'src'),
+  dist: path.join(__dirname, 'dist'),
+  assets: path.join(__dirname, 'src/assets')
+}
+
 module.exports = {
   entry: [
-    "./src/index.js"
+    PATHS.src
   ],
   output: {
-    path: __dirname + '/dist',
+    path: PATHS.dist,
     filename: "index_bundle.js"
   },
   module: {
@@ -26,6 +34,11 @@ module.exports = {
       {
         test: /\.scss$/,
         loaders: ["style", "css", "sass?includePaths[]=" + bourbon]
+      },
+      {
+        test: /\.(jpg|jpeg)/,
+        loader: 'file?name[path][name].[hash].[ext]',
+        include: PATHS.assets
       }
     ]
   },

@@ -9,29 +9,28 @@ import ReactDOM from 'react-dom'
     // LocationCard
 
 let data = [
-  {id:1, location:'New York'},
-  {id:2, location:'Seattle'},
-  {id:3, location:'Bangkok'}
+  {id:1, location:'New York', imageUrl: './assets/new_york.jpg'},
+  {id:2, location:'Seattle', imageUrl: './assets/seattle.jpg'},
+  {id:3, location:'Bangkok', imageUrl: './assets/bangkok.jpg'}
 ]
 
 class LocationBox extends React.Component{
   constructor() {
     super();
     this.state = {
-      location: ''
+      location: 'New York',
+      imageUrl: './assets/new_york.jpg'
     }
   }
   handleClick(evt, index) {
-    console.log('pizza');
-    console.log(index);
-    // Think this is what you want
-    // let location = this.props.data[index].location
-    // this.setState({ location })
+    let location = this.props.data[index].location
+    let imageUrl = this.props.data[index].imageUrl
+    this.setState({ location, imageUrl })
   }
   render() {
     return (
       <div className='location-box'>
-        <LocationHero />
+        <LocationHero location={this.state.location} imageUrl={this.state.imageUrl}/>
         <LocationList data={this.props.data} onClick={(e, i) => this.handleClick(e, i)}/>
       </div>
     )
@@ -42,8 +41,11 @@ class LocationHero extends React.Component{
   render() {
     return (
       <div className='location-hero'>
-        <h1>Location</h1>
-        <p>will be based on card state</p>
+        <h1>{this.props.location}</h1>
+        <div className='splash'>
+          <img className='clip' src='./assets/brush-invert.png' alt=""/>
+          <img src={this.props.imageUrl} alt=""/>
+        </div>
       </div>
     )
   }
@@ -57,6 +59,7 @@ class LocationList extends React.Component{
           onClick={(e, i) => this.props.onClick(e, i)}
           index={index}
           location={location.location}
+          imageUrl={location.imageUrl}
           key={location.id} />
       )
     })
@@ -70,10 +73,11 @@ class LocationList extends React.Component{
 
 class LocationCard extends React.Component{
   render() {
-    let {onClick, index, location} = this.props
+    let {onClick, index, location, imageUrl} = this.props
     return (
       <div className='location-card' onClick={(e) => onClick(e, index)}>
         <h2>{location}</h2>
+        <img src={imageUrl} alt=""/>
       </div>
     )
   }

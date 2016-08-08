@@ -6,13 +6,66 @@ $color-1: #fff;
 $color-2: #8e9295;
 $color-3: #242625;
 
+$primary-font: Helvetica, sans-serif;
+$secondary-font: 'Covered By Your Grace', cursive;
+
+
+*, *:after, *:before {
+  @include box-sizing(border-box);
+}
+
 body {
+  font: {
+    size: 100%;
+    family: $primary-font; // variables inside partials > _variables.scss
+  }
+}
+
+body, html {
+  height: 100%;
 }
 
 .location-hero {
   height: 70vh;
   width: 100%;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  h1 {
+    color: $color-1;
+    font: {
+      family: $secondary-font;
+      size: 12em;
+    }
+    text-shadow: 2px 4px 20px $color-3;
+  }
+  
+  img {
+    position: absolute;
+    top: 0;
+    // height: 100vh;
+    
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+    
+    // left: 0;
+    // bottom: 0;
+    // max-width: 100%;
+    // min-height: 100%;
+    z-index: -2;
+  }
+  
+  .splash {
+    position: absolute;
+    top: 0;
+    width: 80%;
+  }
+  
+  .clip {
+    z-index: -1;
+  }
 }
 
 .location-list {
@@ -27,16 +80,29 @@ body {
 .location-card {
   color: $color-1;
   background-color: $color-2;
-  width: 16em;
-  height: 9em;
+  width: 18em;
+  height: 12em;
   padding: 0.4em;
   margin: 1em;
   align-items: center;
   justify-content: center;
   display: flex;
   border-radius: 0.4em;
-  @include transition(all 0.4s $ease-in-out-cubic)
+  @include transition(all 0.2s $ease-in-out-cubic)
   cursor: pointer;
+  
+  img {
+    border-radius: 0.4em;
+    position: absolute;
+    max-width: 18em;
+    height: 12em;
+    // max-width: 100%;
+    overflow: hidden;
+  }
+  
+  h2 {
+    z-index: 2;
+  }
   
   &:hover {
     @include transform(scale(1.2));
