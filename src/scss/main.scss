@@ -3,13 +3,16 @@
 @import './_normalize';
 
 $color-1: #fff;
+$color-1a: #e8e9eb;
 $color-2: #8e9295;
 $color-3: #242625;
+$color-3a: #303133;
 $color-4: #fc5373;
 $color-5: #70d4c7;
 $color-6: #fb8564;
 
-$primary-font: Helvetica, sans-serif;
+
+$primary-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $secondary-font: 'Covered By Your Grace', cursive;
 
 $S: 320px;
@@ -25,7 +28,13 @@ body {
   font: {
     size: 100%;
     family: $primary-font; // variables inside partials > _variables.scss
+    weight: 400;
   }
+  color: $color-3a;
+}
+
+h1, h2, h3 {
+  font-weight: 500; 
 }
 
 body, html {
@@ -100,6 +109,7 @@ body, html {
   display: flex;
   border-radius: 0.4em;
   cursor: pointer;
+  @include transition(all 0.2s $ease-in-out-cubic)
   
   img {
     border-radius: 0.4em;
@@ -110,7 +120,7 @@ body, html {
     overflow: hidden;
   }
   
-  h2 {
+  h3 {
     z-index: 2;
   }
   
@@ -119,15 +129,77 @@ body, html {
   }
 }
 
+.lower-container {
+  display: flex
+}
+
+.location-details {
+  // flex: 1;
+  width: 360px;
+  padding: 1.5em;
+  border-right: 0.4px solid $color-1a;
+  
+  img {
+    max-width: 100%;
+    height: 240px;
+    border-radius: 0.4em;
+  }
+  
+  p {
+    margin: 0;
+    display: inline;
+    font-size: 14px;
+    line-height: 18px;
+    color: $color-2;
+    
+  }
+  p.overview-description { 
+    margin: 1em 0 2em;
+  }
+  
+  h3 {
+    margin-bottom: 0;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    display: inline-block;
+    padding: 6px 0;
+    line-height: 20px;
+    
+    p {
+      line-height: 24px;
+    }
+    
+    img {
+      vertical-align: bottom;
+      width: 24px;
+      height: 24px;
+    }
+    
+    span {
+      color: $color-3a;
+      margin-left: 12px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+  
+}
+
 nav {
+  z-index: 10;
   margin-top: 1em;
   width: 100%;
   position: fixed;
   display: flex;
-  @include transition(all 2.0s ease-in-out);
   
-  p {
-    padding: 2px 24px 0 4px;
+  h2 {
+    padding: 0 24px 0 6px;
     font-size: 20px;
     margin: 0;
   }
@@ -145,7 +217,7 @@ nav {
     img {
       height: 20px;
       &:first-child {
-        border-left: 2px solid $color-2;
+        border-left: 2px solid rgba($color-3, 0.6);
         padding: 0 24px;
       }
     }
