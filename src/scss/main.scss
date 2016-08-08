@@ -5,6 +5,9 @@
 $color-1: #fff;
 $color-2: #8e9295;
 $color-3: #242625;
+$color-4: #fc5373;
+$color-5: #70d4c7;
+$color-6: #fb8564;
 
 $primary-font: Helvetica, sans-serif;
 $secondary-font: 'Covered By Your Grace', cursive;
@@ -12,6 +15,7 @@ $secondary-font: 'Covered By Your Grace', cursive;
 $S: 320px;
 $M: 800px;
 $L: 1200px;
+
 
 *, *:after, *:before {
   @include box-sizing(border-box);
@@ -121,7 +125,6 @@ nav {
   position: fixed;
   display: flex;
   @include transition(all 2.0s ease-in-out);
-  height: 3.2em;
   
   p {
     padding: 2px 24px 0 4px;
@@ -136,12 +139,13 @@ nav {
   }
   
   .map-icons {
+    padding: 2px 0 2px;
     height: 20px;
-    border-left: 2px solid $color-2;
     
     img {
       height: 20px;
       &:first-child {
+        border-left: 2px solid $color-2;
         padding: 0 24px;
       }
     }
@@ -191,16 +195,17 @@ nav {
     width: 2.2em;
     border-radius: 50%;
   }
+  
+  .open {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: top;
+  }
+
+  .close {
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: top;
+  }
 }
 
-.open {
-  opacity: 1;
-  transform: scale(1);
-  transform-origin: top;
-}
-
-.close {
-  opacity: 0;
-  transform: scale(0);
-  transform-origin: top;
-}

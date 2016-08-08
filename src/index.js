@@ -41,11 +41,9 @@ class NavUser extends React.Component{
     this.handleNavUserClose = this.handleNavUserClose.bind(this);
   }
   handleNavUserOpen() {
-    console.log('open');
     this.setState({open: this.state.open === 'close' ? 'open': 'close'});
   }
   handleNavUserClose() {
-    console.log('close');
     this.setState({open: 'close'});
   }
   render() {
