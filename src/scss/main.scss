@@ -9,6 +9,9 @@ $color-3: #242625;
 $primary-font: Helvetica, sans-serif;
 $secondary-font: 'Covered By Your Grace', cursive;
 
+$S: 320px;
+$M: 800px;
+$L: 1200px;
 
 *, *:after, *:before {
   @include box-sizing(border-box);
@@ -38,22 +41,15 @@ body, html {
       family: $secondary-font;
       size: 12em;
     }
-    text-shadow: 2px 4px 20px $color-3;
+    text-shadow: 0 4px 20px rgba($color-3, 0.4);
   }
   
   img {
     position: absolute;
-    top: 0;
-    // height: 100vh;
-    
+    top: 0;    
     display: block;
     width: 100% !important;
     height: auto !important;
-    
-    // left: 0;
-    // bottom: 0;
-    // max-width: 100%;
-    // min-height: 100%;
     z-index: -2;
   }
   
@@ -65,6 +61,17 @@ body, html {
   
   .clip {
     z-index: -1;
+  }
+  
+  @media only screen and (max-width: $L) {
+    h1 {
+      font-size: 8em;
+      text-shadow: 0 4px 12px rgba($color-3, 0.4);
+    }
+    
+    .splash {
+      width: 100%;
+    }
   }
 }
 
@@ -88,7 +95,6 @@ body, html {
   justify-content: center;
   display: flex;
   border-radius: 0.4em;
-  @include transition(all 0.2s $ease-in-out-cubic)
   cursor: pointer;
   
   img {
@@ -107,4 +113,94 @@ body, html {
   &:hover {
     @include transform(scale(1.2));
   }
+}
+
+nav {
+  margin-top: 1em;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  @include transition(all 2.0s ease-in-out);
+  height: 3.2em;
+  
+  p {
+    padding: 2px 24px 0 4px;
+    font-size: 20px;
+    margin: 0;
+  }
+  
+  > svg {
+    padding-left: 1em;
+    height: 24px;
+    width: auto;
+  }
+  
+  .map-icons {
+    height: 20px;
+    border-left: 2px solid $color-2;
+    
+    img {
+      height: 20px;
+      &:first-child {
+        padding: 0 24px;
+      }
+    }
+  }
+  
+  .nav-user {
+    position: absolute;
+    right: 0;
+    height: 200px;
+    padding: 1em;
+    padding-top: 0;
+    
+    ul {
+      @include transition(all 0.2s $ease-in-out-cubic)
+      border-radius: 3px;
+      list-style: none;
+      padding: 0;
+      width: 2.2em;
+      height: 2.2em * 4;
+      background-color: $color-1;
+      box-shadow: 0 3px 6px rgba($color-3, 0.4);
+    }
+    
+    li {
+      cursor: pointer;
+      width: 100%;
+      height: 2.2em;
+      
+      &:hover path {
+        fill: $color-3 !important;
+      }
+      
+      svg {
+        max-width: 100%;
+        margin: 10px;
+      }
+      
+      path {
+        fill: $color-2 !important;
+      }
+    }
+  }
+  
+  .user-icon {
+    cursor: pointer;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 50%;
+  }
+}
+
+.open {
+  opacity: 1;
+  transform: scale(1);
+  transform-origin: top;
+}
+
+.close {
+  opacity: 0;
+  transform: scale(0);
+  transform-origin: top;
 }
