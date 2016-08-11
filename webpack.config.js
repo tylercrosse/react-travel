@@ -39,7 +39,7 @@ module.exports = {
         test: /\.(gif|svg)$/,
         loader: 'url?limit?25000',
         include: PATHS.assets
-      }
+      },
       {
         test: /\.(jpg|jpeg|png|gif)$/,
         loader: 'file?name[path][name].[hash].[ext]',
