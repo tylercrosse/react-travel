@@ -102,7 +102,49 @@ class LocationDetails extends React.Component{
 class LocationOpinions extends React.Component{
   render() {
     return (
-      <h3>Opinions</h3>
+      <div className='location-opinions'>
+        <div className='opinions-menu'>
+          <h3>Opinions</h3>
+          <div className='opinions-sort'>
+            <p>English v</p>
+          </div>
+          <div className='opinions-sort'>
+            <p>Most Recent v</p>
+          </div>
+        </div>
+        <Opinion />
+        <Opinion />
+        <Opinion />
+        <Opinion />
+      </div>
+    )
+  }
+}
+
+class Opinion extends React.Component{
+  render() {
+    return (
+      <div className='opinion'>
+        <div className='opinion-user'>
+          <img className='user-icon-L' src="./assets/tyler_pixel.gif" alt=""/>
+          <h4>Chloe Blomfontein</h4>
+          <p>4/15/2016</p>
+        </div>
+        <div className='opinion-card'>
+          <img className='opinion-img' src="./assets/liberty.jpg" alt=""/>
+          <div className='opinion-details'>
+            <div className='opinion-rating'>
+              <img src="./assets/star-full.svg" alt=""/>
+              <img src="./assets/star-full.svg" alt=""/>
+              <img src="./assets/star-full.svg" alt=""/>
+              <img src="./assets/star-half.svg" alt=""/>
+              <img src="./assets/star-empty.svg" alt=""/>
+            </div>
+            <p>Quos consectetur quibusdam impedit dicta, deleniti sit molestiae? Hic nostrum quibusdam, iste maiores dolores dolore molestias incidunt officiis dignissimos. Obcaecati, optio architecto?</p>
+            <p>location</p>
+          </div>
+        </div>
+      </div>
     )
   }
 }
@@ -116,7 +158,11 @@ class LocationHero extends React.Component{
           <img className='clip' src='./assets/brush-invert.png' alt=""/>
           <img src={this.props.imageUrl} alt=""/>
         </div>
-        
+        <div className='location-rating'>
+          <svg className='star' xmlns="http://www.w3.org/2000/svg" width="45.16" height="45.16" viewBox="0 0 45.16 45.16"><path d="M22.58 11.27c-6.237 0-11.31 5.074-11.31 11.31s5.073 11.313 11.31 11.313c6.236 0 11.31-5.074 11.31-11.312s-5.074-11.31-11.31-11.31zM22.58 7.944c-1.22 0-2.207-.988-2.207-2.206v-3.53C20.373.987 21.36 0 22.58 0c1.22 0 2.207.988 2.207 2.207v3.53c0 1.22-.99 2.207-2.207 2.207zM22.58 37.215c-1.22 0-2.207.988-2.207 2.207v3.53c0 1.22.988 2.208 2.207 2.208 1.22 0 2.207-.988 2.207-2.208v-3.53c0-1.22-.99-2.207-2.207-2.207zM32.928 12.23c-.86-.86-.86-2.258 0-3.12l2.497-2.497c.86-.86 2.26-.86 3.12 0 .863.862.863 2.26 0 3.12l-2.496 2.498c-.862.863-2.26.863-3.122 0zM12.23 32.93c-.86-.863-2.258-.863-3.12 0l-2.497 2.496c-.86.86-.862 2.26 0 3.12.862.862 2.26.862 3.12 0l2.498-2.497c.863-.862.863-2.26 0-3.12zM37.215 22.58c0-1.22.988-2.207 2.207-2.207h3.53c1.22 0 2.208.988 2.208 2.207 0 1.22-.988 2.206-2.207 2.206h-3.53c-1.22 0-2.208-.987-2.208-2.206zM7.944 22.58c0-1.22-.988-2.207-2.207-2.207h-3.53C.987 20.373 0 21.36 0 22.58c0 1.22.988 2.206 2.207 2.206h3.53c1.22 0 2.207-.987 2.207-2.206zM32.928 32.93c.862-.86 2.26-.86 3.12 0l2.498 2.497c.862.86.862 2.26 0 3.12s-2.26.86-3.12 0l-2.498-2.497c-.862-.862-.862-2.26 0-3.12zM12.23 12.23c.863-.86.863-2.258 0-3.12L9.735 6.614c-.862-.862-2.26-.862-3.12 0-.863.86-.863 2.26 0 3.12L9.11 12.23c.862.864 2.26.864 3.12 0z"/></svg>
+          <p><span>Excellent </span>
+          (Lorem Ipsum)</p>
+        </div>
       </div>
     )
   }

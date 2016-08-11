@@ -33,8 +33,12 @@ body {
   color: $color-3a;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-weight: 500; 
+}
+
+p {
+  color: $color-2;
 }
 
 body, html {
@@ -42,6 +46,7 @@ body, html {
 }
 
 .location-hero {
+  position: relative;
   height: 70vh;
   width: 100%;
   display: flex;
@@ -76,6 +81,31 @@ body, html {
     z-index: -1;
   }
   
+  .location-rating {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: 1em;
+    
+    p {
+      line-height: 20px;
+      display: inline;
+    }
+    
+    span {
+      font-weight: 500; 
+      margin-left: 12px;
+      color: $color-6;
+    }
+    
+    .star {
+      vertical-align: top;
+      height: 20px;
+      width: 20px;
+    }
+  }
+  
   @media only screen and (max-width: $L) {
     h1 {
       font-size: 8em;
@@ -100,8 +130,8 @@ body, html {
 .location-card {
   color: $color-1;
   background-color: $color-2;
-  width: 18em;
-  height: 12em;
+  width: 15em;
+  height: 10em;
   padding: 0.4em;
   margin: 1em;
   align-items: center;
@@ -114,8 +144,8 @@ body, html {
   img {
     border-radius: 0.4em;
     position: absolute;
-    max-width: 18em;
-    height: 12em;
+    max-width: 15em;
+    height: 10em;
     // max-width: 100%;
     overflow: hidden;
   }
@@ -135,8 +165,8 @@ body, html {
 
 .location-details {
   // flex: 1;
-  width: 360px;
-  padding: 1.5em;
+  width: 400px;
+  padding: 1.8em;
   border-right: 0.4px solid $color-1a;
   
   img {
@@ -150,7 +180,6 @@ body, html {
     display: inline;
     font-size: 14px;
     line-height: 18px;
-    color: $color-2;
     
   }
   p.overview-description { 
@@ -184,12 +213,100 @@ body, html {
     span {
       color: $color-3a;
       margin-left: 12px;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 500;
     }
   }
   
 }
+
+.location-opinions {
+  width: 100%;
+  padding: 0 1.8em;
+}
+
+
+
+.opinions-menu {
+  padding: 3em 0 0;
+  width: 100%;
+  border-bottom: 0.4px solid $color-1a;
+  
+  .opinions-sort {
+    display: inline-block;
+    float: right;
+  }
+  
+  h3 {
+    display: inline-block;
+  }
+}
+
+.opinion {
+  // border: 1px solid red;
+  // display: flex;
+  margin: 3em 10% 0;
+  @include clearfix;
+  
+  p {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .opinion-user {
+    float: left;
+    margin-right: 20px;
+    
+    img, h4, p {
+      float: right;
+    }
+    
+    h4, p {
+      clear: both;
+      margin: 0;
+    }
+    
+    h4 {
+      font-size: 14px;
+      margin: 20px 0 6px;
+    }
+  }
+  
+  .opinion-card {
+    float: left;
+    position: relative;
+    // flex: 2;
+    width: 480px;
+    height: 180px;
+    box-shadow: 0 1px 36px rgba($color-3, 0.2);
+    border-radius: 0.4em;
+    
+    p {
+      color: $color-3a;
+      padding: 0 20px;
+    }
+    
+    .opinion-img {
+      margin-left: 10px;
+      float: right;
+      height: 100%;
+      width: auto;
+      border-top-right-radius: 0.4em;
+      border-bottom-right-radius: 0.4em;
+    }
+    
+    .opinion-details {
+      img {
+        display: inline-block;
+        height: 16px;
+      }
+      .opinion-rating {
+        padding: 20px 20px 0 ;
+      }
+    }
+  }
+}
+
 
 nav {
   z-index: 10;
@@ -232,19 +349,19 @@ nav {
     
     ul {
       @include transition(all 0.2s $ease-in-out-cubic)
-      border-radius: 3px;
+      border-radius: 0.3em;
       list-style: none;
       padding: 0;
-      width: 2.2em;
-      height: 2.2em * 4;
+      width: 2.5em;
+      height: 2.5em * 4;
       background-color: $color-1;
-      box-shadow: 0 3px 6px rgba($color-3, 0.4);
+      box-shadow: 0 3px 10px rgba($color-3, 0.2);
     }
     
     li {
       cursor: pointer;
       width: 100%;
-      height: 2.2em;
+      height: 2.5em;
       
       &:hover path {
         fill: $color-3 !important;
@@ -252,20 +369,17 @@ nav {
       
       svg {
         max-width: 100%;
-        margin: 10px;
+        margin: 12px;
       }
       
       path {
         fill: $color-2 !important;
       }
     }
-  }
-  
-  .user-icon {
-    cursor: pointer;
-    height: 2.2em;
-    width: 2.2em;
-    border-radius: 50%;
+    
+    .user-icon-M {
+      cursor: pointer;
+    }
   }
   
   .open {
@@ -281,3 +395,26 @@ nav {
   }
 }
 
+.user-icon-S,
+.user-icon-M,
+.user-icon-L {
+  border-radius: 50%;
+}
+
+.user-icon-S {
+  height: 1.5em;
+  width: 1.5em;
+}
+.user-icon-M {
+  height: 2.5em;
+  width: 2.5em;
+}
+.user-icon-L {
+  height: 3em;
+  width: 3em;
+}
+
+.star {
+  display: inline;
+  fill: $color-6;
+}

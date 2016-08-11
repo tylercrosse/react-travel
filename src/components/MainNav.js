@@ -34,7 +34,7 @@ class NavUser extends React.Component{
   render() {
     return (
       <div onMouseOver={this.handleNavUserOpen} onMouseOut={this.handleNavUserClose} className='nav-user'>
-        <img className='user-icon' src="./assets/tyler_pixel.gif" alt=""/>
+        <img className='user-icon-M' src="./assets/tyler_pixel.gif" alt=""/>
         <ul className={this.state.open}>
           <li>
             <a href="#">
