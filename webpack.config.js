@@ -36,7 +36,12 @@ module.exports = {
         loaders: ["style", "css", "sass?includePaths[]=" + bourbon]
       },
       {
-        test: /\.(jpg|jpeg)/,
+        test: /\.(gif|svg)$/,
+        loader: 'url?limit?25000',
+        include: PATHS.assets
+      },
+      {
+        test: /\.(jpg|jpeg|png|gif)$/,
         loader: 'file?name[path][name].[hash].[ext]',
         include: PATHS.assets
       }

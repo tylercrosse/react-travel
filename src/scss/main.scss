@@ -3,11 +3,21 @@
 @import './_normalize';
 
 $color-1: #fff;
+$color-1a: #e8e9eb;
 $color-2: #8e9295;
 $color-3: #242625;
+$color-3a: #303133;
+$color-4: #fc5373;
+$color-5: #70d4c7;
+$color-6: #fb8564;
 
-$primary-font: Helvetica, sans-serif;
+
+$primary-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $secondary-font: 'Covered By Your Grace', cursive;
+
+$S: 320px;
+$M: 800px;
+$L: 1200px;
 
 
 *, *:after, *:before {
@@ -18,7 +28,17 @@ body {
   font: {
     size: 100%;
     family: $primary-font; // variables inside partials > _variables.scss
+    weight: 400;
   }
+  color: $color-3a;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 500; 
+}
+
+p {
+  color: $color-2;
 }
 
 body, html {
@@ -26,6 +46,7 @@ body, html {
 }
 
 .location-hero {
+  position: relative;
   height: 70vh;
   width: 100%;
   display: flex;
@@ -38,22 +59,15 @@ body, html {
       family: $secondary-font;
       size: 12em;
     }
-    text-shadow: 2px 4px 20px $color-3;
+    text-shadow: 0 4px 20px rgba($color-3, 0.4);
   }
   
   img {
     position: absolute;
-    top: 0;
-    // height: 100vh;
-    
+    top: 0;    
     display: block;
     width: 100% !important;
     height: auto !important;
-    
-    // left: 0;
-    // bottom: 0;
-    // max-width: 100%;
-    // min-height: 100%;
     z-index: -2;
   }
   
@@ -65,6 +79,42 @@ body, html {
   
   .clip {
     z-index: -1;
+  }
+  
+  .location-rating {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: 1.8em;
+    
+    p {
+      line-height: 20px;
+      display: inline;
+    }
+    
+    span {
+      font-weight: 500; 
+      margin-left: 12px;
+      color: $color-6;
+    }
+    
+    .star {
+      vertical-align: top;
+      height: 20px;
+      width: 20px;
+    }
+  }
+  
+  @media only screen and (max-width: $L) {
+    h1 {
+      font-size: 8em;
+      text-shadow: 0 4px 12px rgba($color-3, 0.4);
+    }
+    
+    .splash {
+      width: 100%;
+    }
   }
 }
 
@@ -80,31 +130,313 @@ body, html {
 .location-card {
   color: $color-1;
   background-color: $color-2;
-  width: 18em;
-  height: 12em;
+  width: 15em;
+  height: 10em;
   padding: 0.4em;
   margin: 1em;
   align-items: center;
   justify-content: center;
   display: flex;
   border-radius: 0.4em;
-  @include transition(all 0.2s $ease-in-out-cubic)
   cursor: pointer;
+  @include transition(all 0.2s $ease-in-out-cubic)
   
   img {
     border-radius: 0.4em;
     position: absolute;
-    max-width: 18em;
-    height: 12em;
+    max-width: 15em;
+    height: 10em;
     // max-width: 100%;
     overflow: hidden;
   }
   
-  h2 {
+  h3 {
     z-index: 2;
+    text-shadow: 0 0 6px $color-3;
   }
   
   &:hover {
     @include transform(scale(1.2));
   }
+}
+
+.lower-container {
+  display: flex
+}
+
+.location-details {
+  // flex: 1;
+  width: 400px;
+  padding: 1.8em;
+  border-right: 0.4px solid $color-1a;
+  
+  img {
+    max-width: 100%;
+    height: 200px;
+    border-radius: 0.4em;
+  }
+  
+  p {
+    margin: 0;
+    display: inline;
+    font-size: 14px;
+    line-height: 18px;
+    
+  }
+  p.overview-description { 
+    margin: 1em 0 2em;
+  }
+  
+  h3 {
+    margin-bottom: 0;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    display: inline-block;
+    padding: 6px 0;
+    line-height: 20px;
+    
+    p {
+      line-height: 24px;
+    }
+    
+    img {
+      vertical-align: bottom;
+      width: 24px;
+      height: 24px;
+    }
+    
+    span {
+      color: $color-3a;
+      margin-left: 12px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+  
+}
+
+.location-opinions {
+  width: 100%;
+  padding: 0 1.8em;
+}
+
+
+
+.opinions-menu {
+  padding: 3em 0 0;
+  width: 100%;
+  border-bottom: 0.4px solid $color-1a;
+  
+  .opinions-sort {
+    display: inline-block;
+    float: right;
+  }
+  
+  h3 {
+    display: inline-block;
+  }
+}
+
+.opinion {
+  // border: 1px solid red;
+  // display: flex;
+  margin: 3em 10% 0;
+  @include clearfix;
+  
+  p {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .opinion-user {
+    float: left;
+    margin-right: 20px;
+    
+    img, h4, p {
+      float: right;
+    }
+    
+    h4, p {
+      clear: both;
+      margin: 0;
+    }
+    
+    h4 {
+      font-size: 14px;
+      margin: 20px 0 6px;
+    }
+  }
+  
+  .opinion-card {
+    float: left;
+    position: relative;
+    // flex: 2;
+    width: 480px;
+    height: 180px;
+    box-shadow: 0 1px 36px rgba($color-3, 0.2);
+    border-radius: 0.4em;
+    
+    p {
+      color: $color-3a;
+      padding: 0 20px;
+    }
+    
+    .opinion-img {
+      margin-left: 10px;
+      float: right;
+      height: 100%;
+      width: auto;
+      border-top-right-radius: 0.4em;
+      border-bottom-right-radius: 0.4em;
+    }
+    
+    .opinion-details {
+      img, svg {
+        display: inline-block;
+        height: 16px;
+      }
+      .opinion-rating {
+        padding: 20px 20px 0 ;
+      }
+      .opinion-values {
+        padding-left: 20px;
+        line-height: 16px;
+        
+        span {
+          color: $color-2;
+          font-size: 12px;
+          padding-right: 8px;
+        }
+        
+        svg {
+          padding-right: 4px;
+          vertical-align: top;
+          fill: $color-2;
+        }
+        
+        .value-detail {
+          float: right;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+
+nav {
+  z-index: 10;
+  margin-top: 1em;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  
+  h2 {
+    padding: 0 24px 0 6px;
+    font-size: 20px;
+    margin: 0;
+  }
+  
+  > svg {
+    padding-left: 1.8em;
+    height: 24px;
+    width: auto;
+  }
+  
+  .map-icons {
+    padding: 2px 0 2px;
+    height: 20px;
+    
+    img {
+      height: 20px;
+      &:first-child {
+        border-left: 2px solid rgba($color-3, 0.6);
+        padding: 0 24px;
+      }
+    }
+  }
+  
+  .nav-user {
+    position: absolute;
+    right: 0;
+    height: 200px;
+    padding: 1em;
+    padding: 0 1.8em 1em 1em;
+    
+    ul {
+      @include transition(all 0.2s $ease-in-out-cubic)
+      border-radius: 0.3em;
+      list-style: none;
+      padding: 0;
+      width: 2.5em;
+      height: 2.5em * 4;
+      background-color: $color-1;
+      box-shadow: 0 3px 10px rgba($color-3, 0.2);
+    }
+    
+    li {
+      cursor: pointer;
+      width: 100%;
+      height: 2.5em;
+      
+      &:hover path {
+        fill: $color-3 !important;
+      }
+      
+      svg {
+        max-width: 100%;
+        margin: 12px;
+      }
+      
+      path {
+        fill: $color-2 !important;
+      }
+    }
+    
+    .user-icon-M {
+      cursor: pointer;
+    }
+  }
+  
+  .open {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: top;
+  }
+
+  .close {
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: top;
+  }
+}
+
+.user-icon-S,
+.user-icon-M,
+.user-icon-L {
+  border-radius: 50%;
+}
+
+.user-icon-S {
+  height: 1.5em;
+  width: 1.5em;
+}
+.user-icon-M {
+  height: 2.5em;
+  width: 2.5em;
+}
+.user-icon-L {
+  height: 3em;
+  width: 3em;
+}
+
+.star {
+  display: inline;
+  fill: $color-6;
 }
